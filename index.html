@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Number Selection</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        margin: 0;
+        background: #f3f5f9;
+        color: #222;
+    }
+
+    header {
+        background: #222;
+        color: white;
+        padding: 18px;
+        text-align: center;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 25px auto;
+        padding: 15px;
+    }
+
+    .card {
+        background: white;
+        padding: 22px;
+        margin-bottom: 20px;
+        border-radius: 14px;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+        margin-top: 0;
+        font-size: 21px;
+    }
+
+    label {
+        display: block;
+        margin-top: 12px;
+        margin-bottom: 6px;
+        font-weight: bold;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+    }
+
+    .number-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .number-box {
+        text-align: center;
+    }
+
+    .number-box select {
+        font-size: 20px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    button {
+        width: 100%;
+        padding: 13px;
+        border: none;
+        border-radius: 8px;
+        background: #222;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 18px;
+    }
+
+    button:hover {
+        opacity: 0.85;
+    }
+
+    .summary {
+        background: #f1f3f6;
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 15px;
+    }
+
+    .selected-numbers {
+        font-size: 25px;
+        font-weight: bold;
+        text-align: center;
+        letter-spacing: 8px;
+        margin: 10px 0;
+    }
+
+    .status {
+        padding: 8px 12px;
+        border-radius: 20px;
+        display: inline-block;
+        font-weight: bold;
+        background: #fff3cd;
+    }
+
+    .admin-order {
+        border: 1px solid #ddd;
+        padding: 15px;
+        margin-top: 12px;
+        border-radius: 10px;
+    }
+
+    .admin-order button {
+        width: auto;
+        padding: 9px 15px;
+        margin-right: 5px;
+        margin-top: 10px;
+    }
+
+    .approve {
+        background: #198754;
+    }
+
+    .reject {
+        background: #dc3545;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .note {
+        font-size: 13px;
+        color: #666;
+        margin-top: 8px;
+    }
+
+    @media(max-width: 450px) {
+        .number-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Customer Number Selection</h1>
+</header>
+
+<div class="container">
+
+    <!-- CUSTOMER REGISTRATION -->
+    <div class="card">
+        <h2>Customer Registration</h2>
+
+        <label>Customer Name</label>
+        <input type="text" id="name" placeholder="Enter customer name">
+
+        <label>Mobile Number</label>
+        <input type="tel" id="mobile" placeholder="Enter mobile number">
+
+        <label>Email ID</label>
+        <input type="email" id="email" placeholder="Enter email ID">
+
+        <label>Account Details</label>
+        <input type="text" id="account" placeholder="Enter account details">
+
+        <label>UPI ID</label>
+        <input type="text" id="upi" placeholder="example@upi">
+    </div>
+
+
+    <!-- NUMBER SELECTION -->
+    <div class="card">
+
+        <h2>Select Numbers</h2>
+
+        <p>Select one number in each box.</p>
+
+        <div class="number-grid">
+
+            <div class="number-box">
+                <label>Box 1</label>
+                <select id="number1">
+                    <option value="">Select</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                </select>
+            </div>
+
+            <div class="number-box">
+                <label>Box 2</label>
+                <select id="number2">
+                    <option value="">Select</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                </select>
+            </div>
+
+            <div class="number-box">
+                <label>Box 3</label>
+                <select id="number3">
+                    <option value="">Select</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                </select>
+            </div>
+
+            <div class="number-box">
+                <label>Box 4</label>
+                <select id="number4">
+                    <option value="">Select</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                </select>
+            </div>
+
+        </div>
+
+        <button onclick="showSummary()">OK - Continue</button>
+
+    </div>
+
+
+    <!-- ORDER SUMMARY -->
+    <div class="card hidden" id="summaryCard">
+
+        <h2>Order Summary</h2>
+
+        <div class="summary">
+
+            <p><strong>Customer:</strong> <span id="summaryName"></span></p>
+
+            <p><strong>Mobile:</strong> <span id="summaryMobile"></span></p>
+
+            <p><strong>UPI:</strong> <span id="summaryUpi"></span></p>
+
+            <p><strong>Selected Numbers:</strong></p>
+
+            <div class="selected-numbers" id="selectedNumbers"></div>
+
+            <p>
+                <strong>Status:</strong>
+                <span class="status" id="customerStatus">Pending</span>
+            </p>
+
+        </div>
+
+        <button onclick="submitOrder()">Submit Order</button>
+
+    </div>
+
+
+    <!-- ADMIN PANEL -->
+    <div class="card">
+
+        <h2>Admin Panel</h2>
+
+        <p class="note">
+            Demo admin panel. Orders are stored only in this browser.
+        </p>
+
+        <button onclick="loadOrders()">Refresh Orders</button>
+
+        <div id="adminOrders"></div>
+
+    </div>
+
+
+    <!-- ANNOUNCEMENT -->
+    <div class="card">
+
+        <h2>Admin Announcement</h2>
+
+        <input
+            type="text"
+            id="announcementInput"
+            placeholder="Enter announcement">
+
+        <button onclick="updateAnnouncement()">
+            Update Announcement
+        </button>
+
+        <div class="summary">
+            <strong>Current Announcement:</strong>
+            <p id="announcement">No announcement yet.</p>
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+let currentOrder = null;
+
+
+// SHOW SUMMARY
+function showSummary() {
+
+    const name = document.getElementById("name").value.trim();
+    const mobile = document.getElementById("mobile").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const account = document.getElementById("account").value.trim();
+    const upi = document.getElementById("upi").value.trim();
+
+    const n1 = document.getElementById("number1").value;
+    const n2 = document.getElementById("number2").value;
+    const n3 = document.getElementById("number3").value;
+    const n4 = document.getElementById("number4").value;
+
+    if (!name || !mobile) {
+        alert("Please enter customer name and mobile number.");
+        return;
+    }
+
+    if (!n1 || !n2 || !n3 || !n4) {
+        alert("Please select all 4 numbers.");
+        return;
+    }
+
+    currentOrder = {
+        id: Date.now(),
+        name: name,
+        mobile: mobile,
+        email: email,
+        account: account,
+        upi: upi,
+        numbers: [n1, n2, n3, n4],
+        status: "Pending"
+    };
+
+    document.getElementById("summaryName").innerText = name;
+    document.getElementById("summaryMobile").innerText = mobile;
+    document.getElementById("summaryUpi").innerText = upi;
+
+    document.getElementById("selectedNumbers").innerText =
+        n1 + " - " + n2 + " - " + n3 + " - " + n4;
+
+    document.getElementById("summaryCard").classList.remove("hidden");
+
+    window.scrollTo({
+        top: document.getElementById("summaryCard").offsetTop,
+        behavior: "smooth"
+    });
+}
+
+
+// SUBMIT ORDER
+function submitOrder() {
+
+    if (!currentOrder) {
+        alert("Please create an order first.");
+        return;
+    }
+
+    let orders =
+        JSON.parse(localStorage.getItem("orders")) || [];
+
+    orders.push(currentOrder);
+
+    localStorage.setItem(
+        "orders",
+        JSON.stringify(orders)
+    );
+
+    document.getElementById("customerStatus").innerText =
+        "Submitted";
+
+    alert("Order submitted successfully.");
+
+    loadOrders();
+}
+
+
+// LOAD ADMIN ORDERS
+function loadOrders() {
+
+    const orders =
+        JSON.parse(localStorage.getItem("orders")) || [];
+
+    const container =
+        document.getElementById("adminOrders");
+
+    container.innerHTML = "";
+
+    if (orders.length === 0) {
+        container.innerHTML =
+            "<p>No orders available.</p>";
+        return;
+    }
+
+    orders.forEach((order, index) => {
+
+        const div =
+            document.createElement("div");
+
+        div.className = "admin-order";
+
+        div.innerHTML = `
+            <strong>Order #${index + 1}</strong>
+
+            <p>
+                <strong>Name:</strong>
+                ${order.name}
+            </p>
+
+            <p>
+                <strong>Mobile:</strong>
+                ${order.mobile}
+            </p>
+
+            <p>
+                <strong>Numbers:</strong>
+                ${order.numbers.join(" - ")}
+            </p>
+
+            <p>
+                <strong>UPI:</strong>
+                ${order.upi || "Not provided"}
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+                ${order.status}
+            </p>
+
+            <button
+                class="approve"
+                onclick="changeStatus(${order.id}, 'Approved')">
+                Approve
+            </button>
+
+            <button
+                class="reject"
+                onclick="changeStatus(${order.id}, 'Rejected')">
+                Reject
+            </button>
+
+            <button
+                onclick="changeStatus(${order.id}, 'Completed')">
+                Complete
+            </button>
+        `;
+
+        container.appendChild(div);
+    });
+}
+
+
+// CHANGE ORDER STATUS
+function changeStatus(id, newStatus) {
+
+    let orders =
+        JSON.parse(localStorage.getItem("orders")) || [];
+
+    orders = orders.map(order => {
+
+        if (order.id === id) {
+            order.status = newStatus;
+        }
+
+        return order;
+    });
+
+    localStorage.setItem(
+        "orders",
+        JSON.stringify(orders)
+    );
+
+    loadOrders();
+
+    alert("Order status updated to " + newStatus);
+}
+
+
+// ANNOUNCEMENT
+function updateAnnouncement() {
+
+    const text =
+        document.getElementById("announcementInput")
+        .value.trim();
+
+    if (!text) {
+        alert("Please enter an announcement.");
+        return;
+    }
+
+    localStorage.setItem(
+        "announcement",
+        text
+    );
+
+    document.getElementById("announcement").innerText =
+        text;
+
+    document.getElementById("announcementInput").value = "";
+}
+
+
+// LOAD SAVED ANNOUNCEMENT
+function loadAnnouncement() {
+
+    const saved =
+        localStorage.getItem("announcement");
+
+    if (saved) {
+        document.getElementById("announcement")
+            .innerText = saved;
+    }
+}
+
+
+// START
+loadOrders();
+loadAnnouncement();
+
+</script>
+
+</body>
+</html>
